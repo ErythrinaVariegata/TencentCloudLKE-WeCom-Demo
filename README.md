@@ -9,8 +9,8 @@
 - 支持分片输出腾讯云大模型知识引擎智能应用对用户消息的响应
 
 目前支持的语言：
-- [golang](./golang/README.md)
-- [python3](./python3/README.md)
+- [golang](./golang)
+- [python3](./python3)
 
 ## Q&A
 示例代码已经按照官方文档步骤完整实践过，代码仅为个人编写供大家参考。欢迎前往`Discussions`进行讨论～
