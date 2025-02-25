@@ -56,7 +56,7 @@ class SSEClient:
                     event_data = json.loads(data)
                     if event_data['type'] != event_type:
                         # 本次事件的数据中的事件类型与本次事件的类型不一致，告警但不中断处理
-                        self.logger.error(f'Get event data not consist with type, expect: {event_type}, get: {event_data['type']}')
+                        self.logger.error(f'Get event data not consist with type, expect: {event_type}, get: {event_data["type"]}')
                     if event_data['type'] == 'error':
                         # 处理报错
                         err_code = event_data['error']['code']
@@ -106,7 +106,7 @@ class SSEClient:
                                 yield f'> {self.__reasoning_procedure_name__}...\n> \n> {reasoning_content_cut}\n{prefix}'
                         if not event_data['payload']['is_from_self']:
                             if event_data['payload']['is_final']:
-                                self.logger.info(f'Get final event, traceId: {event_data['payload']['trace_id']}, data: {event_data}')
+                                self.logger.info(f'Get final event, traceId: {event_data["payload"]["trace_id"]}, data: {event_data}')
                             self.__content__ = event_data['payload']['content']
                             # 每遇到一段回答，输出一次，避免等待过久体验不佳以及回答过长企微强制截断。
                             newlines_pos = self.__content__.find('\n\n')
@@ -122,7 +122,7 @@ class SSEClient:
                                 if len(content_cut) != 0:
                                     yield content_cut
                         else:
-                            self.logger.info(f'Get input event, traceId: {event_data['payload']['trace_id']}, data: {event_data}')
+                            self.logger.info(f'Get input event, traceId: {event_data["payload"]["trace_id"]}, data: {event_data}')
                         continue
                     elif event_data['type'] == 'token_stat':
                         # 处理token相关信息
@@ -159,7 +159,7 @@ class SSEClient:
         formatted_text = text
         if len(self.__references__) > 0:
             for ref in self.__references__:
-                ref_holder = f'[{ref['id']}]'
-                ref_link = f'[【资料{ref['id']}】]({ref['url']})'
+                ref_holder = f'[{ref["id"]}]'
+                ref_link = f'[【资料{ref["id"]}】]({ref["url"]})'
                 formatted_text = formatted_text.replace(ref_holder, ref_link)
         return formatted_text
