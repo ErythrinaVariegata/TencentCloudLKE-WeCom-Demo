@@ -9,7 +9,6 @@ import logging
 import os
 import uuid
 
-
 WX_TOKEN = ''
 WX_ENCODING_AES_KEY = ''
 WX_CORP_ID = ''
@@ -105,6 +104,7 @@ async def home():
             if ret != 0:
                 app.logger.error(f'DecryptMsg failed, ret: {ret}')
                 abort(400)
+            decrypted_msg = decrypted_msg.decode('utf-8')
             app.logger.info(f'DecryptMsg done, msg: {decrypted_msg}')
             xml_tree = ET.fromstring(decrypted_msg)
             content = xml_tree.find("Content").text

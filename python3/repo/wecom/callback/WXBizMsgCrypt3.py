@@ -16,7 +16,7 @@ from Crypto.Cipher import AES
 import xml.etree.cElementTree as ET
 import socket
 
-from repo.wecom.callback import ierror 
+from repo.wecom.callback import ierror
 
 
 """
